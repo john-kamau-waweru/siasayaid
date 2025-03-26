@@ -1,23 +1,20 @@
-"use client";
-
 import Image from "next/image";
 import { Poppins, Open_Sans } from "next/font/google";
 import Link from "next/link";
 import { FaShieldAlt, FaCheckCircle, FaGlobe } from "react-icons/fa";
-import { useState } from "react";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
 
 export default function Home() {
-  const [isModalOpen, setModalOpen] = useState(false);
-
   return (
     <div className={`bg-white text-[#3A3A3A] ${openSans.className}`}>
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-white max-w-[80%] mx-auto">
         <div className={`text-[#333333] text-xl ${poppins.className}`}>
-          <Image src="/logo.png" width={80} height={0} />
+          <Link href={`/`}>
+            <Image src="/logo.png" width={80} height={0} alt="logo" />
+          </Link>
         </div>
         <Link
           className="inline-flex items-center justify-center gap-2 text-sm border border-[#ED1D24] shadow bg-[#ED1D24] hover:bg-[#ED1D24] text-white font-medium rounded-full px-6 py-4 transition-all hover:scale-105"
