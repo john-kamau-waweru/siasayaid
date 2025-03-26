@@ -61,7 +61,7 @@ export default function ExperiencesSlider() {
   }, [currentIndex, itemsPerView]);
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-white py-16">
       <div className="max-w-[90%] md:max-w-[80%] mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-6">
           Shared Experiences
