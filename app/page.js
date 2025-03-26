@@ -170,7 +170,7 @@ export default function Home() {
         <div className="max-w-[80%] mx-auto">
           {/* Content */}
         <div className="flex justify-center mb-4">
-          <Link>
+          <Link href={`/`}>
             <Image src="/logo2.jpg" width={120} height={0} alt="siasa place" className="rounded-lg" />
           </Link>
         </div>
