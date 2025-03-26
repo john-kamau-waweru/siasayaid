@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Poppins, Open_Sans } from "next/font/google";
 import Link from "next/link";
-import { FaShieldAlt, FaCheckCircle, FaGlobe, FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { FaShieldAlt, FaCheckCircle, FaGlobe, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaInstagram, FaTiktok } from "react-icons/fa";
 import ExperiencesSlider from "@/components/ExperiencesSlider";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
@@ -169,9 +169,9 @@ export default function Home() {
       <section className="w-full flex flex-col items-center text-center px-6 md:px-8 py-8 md:py-8 bg-[#166E38]">
         <div className="max-w-[80%] mx-auto">
           {/* Content */}
-        <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6 text-white">
-          Siasa Place
-        </h2>
+        <div className="flex justify-center mb-4">
+          <Image src="/logo2.jpg" width={120} height={0} alt="siasa place" className="rounded-lg" />
+        </div>
         <p className="text-white max-w-2xl text-sm md:text-base">
           Access to IDs is a major barrier to young people's political participation.
         </p>
@@ -179,16 +179,25 @@ export default function Home() {
           Follow Siasa Place on social media to stay informed and be part of the movement for change!
         </p>
 
-        {/* Social Media Icons */}
-        <div className="flex justify-center gap-6">
-          <a href="https://facebook.com/siasaplace" target="_blank" rel="noopener noreferrer">
-            <FaFacebookF className="text-white w-8 h-8 hover:scale-110 hover:opacity-80 transition-transform" />
+         {/* Social Media Icons */}
+         <div className="flex justify-center gap-6">
+          <a href="https://www.facebook.com/siasaplace/?ref=br_rs" target="_blank" rel="noopener noreferrer">
+            <FaFacebookF className="text-white w-6 h-6 hover:scale-110 hover:opacity-80 transition-transform" />
           </a>
           <a href="https://twitter.com/siasaplace" target="_blank" rel="noopener noreferrer">
-            <FaTwitter className="text-white w-8 h-8 hover:scale-110 hover:opacity-80 transition-transform" />
+            <FaTwitter className="text-white w-6 h-6 hover:scale-110 hover:opacity-80 transition-transform" />
           </a>
-          <a href="https://linkedin.com/company/siasaplace" target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn className="text-white w-8 h-8 hover:scale-110 hover:opacity-80 transition-transform" />
+          <a href="https://ke.linkedin.com/in/siasa-place-414327167" target="_blank" rel="noopener noreferrer">
+            <FaLinkedinIn className="text-white w-6 h-6 hover:scale-110 hover:opacity-80 transition-transform" />
+          </a>
+          <a href="https://www.youtube.com/@siasaplacekenya" target="_blank" rel="noopener noreferrer">
+            <FaYoutube className="text-white w-6 h-6 hover:scale-110 hover:opacity-80 transition-transform" />
+          </a>
+          <a href="https://www.instagram.com/siasaplaceke" target="_blank" rel="noopener noreferrer">
+            <FaInstagram className="text-white w-6 h-6 hover:scale-110 hover:opacity-80 transition-transform" />
+          </a>
+          <a href="https://www.tiktok.com/@siasaplace" target="_blank" rel="noopener noreferrer">
+            <FaTiktok className="text-white w-6 h-6 hover:scale-110 hover:opacity-80 transition-transform" />
           </a>
         </div>
         </div>
