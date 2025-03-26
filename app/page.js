@@ -170,7 +170,9 @@ export default function Home() {
         <div className="max-w-[80%] mx-auto">
           {/* Content */}
         <div className="flex justify-center mb-4">
-          <Image src="/logo2.jpg" width={120} height={0} alt="siasa place" className="rounded-lg" />
+          <Link>
+            <Image src="/logo2.jpg" width={120} height={0} alt="siasa place" className="rounded-lg" />
+          </Link>
         </div>
         <p className="text-white max-w-2xl text-sm md:text-base">
           Access to IDs is a major barrier to young people's political participation.
