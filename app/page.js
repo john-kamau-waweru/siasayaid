@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Poppins, Open_Sans } from "next/font/google";
 import Link from "next/link";
 import { FaShieldAlt, FaCheckCircle, FaGlobe } from "react-icons/fa";
+import ExperiencesSlider from "@/components/ExperiencesSlider";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
@@ -28,11 +29,11 @@ export default function Home() {
       <section className="relative flex items-center justify-between px-8 py-20 bg-white bg-cover max-w-[80%] mx-auto md:min-h-[500px]">
         {/* Floating Balls */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-10 w-4 h-4 bg-[#ED1D24] rounded-full" />
-          <div className="absolute top-20 left-[40%] w-4 h-4 bg-[#166E38] rounded-full delay-1000" />
-          <div className="absolute bottom-10 left-1/2 w-4 h-4 bg-black rounded-full delay-2000" />
-          <div className="absolute bottom-20 right-10 w-4 h-4 bg-[#ED1D24] rounded-full delay-1500" />
-          <div className="absolute top-5 right-5 w-4 h-4 bg-[#166E38] rounded-full delay-500" />
+          <div className="absolute top-10 left-10 w-4 h-4 bg-[#ED1D24] rounded-full animate-glow" />
+          <div className="absolute top-20 left-[40%] w-4 h-4 bg-[#166E38] rounded-full animate-glow delay-1000" />
+          <div className="absolute bottom-10 left-1/2 w-4 h-4 bg-black rounded-full animate-glow delay-2000" />
+          <div className="absolute bottom-20 right-10 w-4 h-4 bg-[#ED1D24] rounded-full animate-glow delay-1500" />
+          <div className="absolute top-5 right-5 w-4 h-4 bg-[#166E38] rounded-full animate-glow delay-500" />
         </div>
         <div>
           <h1 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
@@ -56,7 +57,7 @@ export default function Home() {
             </Link>
             <Link
               className="inline-flex items-center justify-center gap-2 text-sm border border-[#166E38] shadow bg-white hover:bg-[#166E38] hover:text-white text-[#166E38] font-medium rounded-full px-6 py-4 pt-4 pb-4"
-              href="/submit"
+              href="/experiences"
             >
               Other experiences
             </Link>
@@ -140,13 +141,16 @@ export default function Home() {
             </Link>
             <Link
               className="inline-flex items-center justify-center gap-2 text-sm border border-[#166E38] shadow bg-white hover:bg-[#166E38] hover:text-white text-[#166E38] font-medium rounded-full px-6 py-4 pt-4 pb-4"
-              href="/submit"
+              href="/experiences"
             >
               Straight from the People 🗣️
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Experience Slider */}
+      <ExperiencesSlider />
 
       {/* Footer */}
       <footer className="p-8 text-center bg-gray-50 w-full mx-auto">

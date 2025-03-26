@@ -1,15 +1,131 @@
+"use client";
 import { Poppins, Open_Sans } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // ✅ Fix import
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
 
+const counties = [
+  { name: "Mombasa", code: 1 },
+  { name: "Kwale", code: 2 },
+  { name: "Kilifi", code: 3 },
+  { name: "Tana River", code: 4 },
+  { name: "Lamu", code: 5 },
+  { name: "Taita-Taveta", code: 6 },
+  { name: "Garissa", code: 7 },
+  { name: "Wajir", code: 8 },
+  { name: "Mandera", code: 9 },
+  { name: "Marsabit", code: 10 },
+  { name: "Isiolo", code: 11 },
+  { name: "Meru", code: 12 },
+  { name: "Tharaka-Nithi", code: 13 },
+  { name: "Embu", code: 14 },
+  { name: "Kitui", code: 15 },
+  { name: "Machakos", code: 16 },
+  { name: "Makueni", code: 17 },
+  { name: "Nyandarua", code: 18 },
+  { name: "Nyeri", code: 19 },
+  { name: "Kirinyaga", code: 20 },
+  { name: "Murang'a", code: 21 },
+  { name: "Kiambu", code: 22 },
+  { name: "Turkana", code: 23 },
+  { name: "West Pokot", code: 24 },
+  { name: "Samburu", code: 25 },
+  { name: "Trans-Nzoia", code: 26 },
+  { name: "Uasin Gishu", code: 27 },
+  { name: "Elgeyo-Marakwet", code: 28 },
+  { name: "Nandi", code: 29 },
+  { name: "Baringo", code: 30 },
+  { name: "Laikipia", code: 31 },
+  { name: "Nakuru", code: 32 },
+  { name: "Narok", code: 33 },
+  { name: "Kajiado", code: 34 },
+  { name: "Kericho", code: 35 },
+  { name: "Bomet", code: 36 },
+  { name: "Kakamega", code: 37 },
+  { name: "Vihiga", code: 38 },
+  { name: "Bungoma", code: 39 },
+  { name: "Busia", code: 40 },
+  { name: "Siaya", code: 41 },
+  { name: "Kisumu", code: 42 },
+  { name: "Homa Bay", code: 43 },
+  { name: "Migori", code: 44 },
+  { name: "Kisii", code: 45 },
+  { name: "Nyamira", code: 46 },
+  { name: "Nairobi", code: 47 },
+];
+
 export default function Submit() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    county: "",
+    experience: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+    const { name, email, county, experience } = formData;
+
+    if (!name || !county || !experience) {
+      setMessage("Please fill in all required fields.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, county, experience }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success("Experience Submitted Successfully!", {
+          icon: "✅",
+        });
+        setFormData({ name: "", email: "", county: "", experience: "" });
+        setTimeout(() => {
+          router.push("/experiences");
+        }, 2000);
+      } else {
+        setMessage(result.message || "Submission failed.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage("An error occurred. Please try again.");
+    }
+
+    setLoading(false);
+  };
+
   return (
     <div
       className={`bg-white text-[#3A3A3A] min-h-screen ${openSans.className}`}
     >
+      {/* Add ToastContainer here */}
+      <ToastContainer position="top-right" autoClose={3000} />
+
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-white max-w-[80%] mx-auto">
         <div className={`text-[#333333] text-xl ${poppins.className}`}>
@@ -19,7 +135,7 @@ export default function Submit() {
         </div>
         <Link
           className="inline-flex items-center justify-center gap-2 text-sm border border-[#166E38] shadow bg-white hover:bg-[#166E38] hover:text-white text-[#166E38] font-medium rounded-full px-6 py-4 pt-4 pb-4"
-          href="/submit"
+          href="/experiences"
         >
           Other experiences
         </Link>
@@ -35,39 +151,45 @@ export default function Submit() {
             Access to IDs is a major barrier to young people's political
             participation.
           </p>
-          <form className="space-y-2 pt-4">
+          <form className="space-y-2 pt-4" onSubmit={handleSubmit}>
             <div className="mb-5">
               <label className="block text-gray-800 font-normal mb-1 text-sm">
-                Name *
+                Name <span className="text-red-800">*</span>
               </label>
               <input
                 type="text"
                 className="w-full p-3 border rounded-lg"
                 required
+                name="name"
+                value={formData.name} onChange={handleChange}
               />
             </div>
             <div className="mb-5">
               <label className="block text-gray-800 font-normal mb-1 text-sm">
-                County
+                County <span className="text-red-800">*</span>
               </label>
-              <select className="w-full p-3 border rounded-lg">
+              <select className="w-full p-3 border rounded-lg" name="county" value={formData.county} onChange={handleChange} required>
                 <option value="">Select County</option>
                 {/* Add county options here */}
+                {counties.map((county) => (
+                  <option key={county.code} value={county.name}>{county.name}</option>
+                ))}
               </select>
             </div>
             <div className="mb-5">
               <label className="block text-gray-800 font-normal mb-1 text-sm">
-                Email (Optional)
+                Email <span className="text-red-800">*</span>
               </label>
-              <input type="email" className="w-full p-3 border rounded-lg" />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-3 border rounded-lg" required />
             </div>
             <div className="mb-5">
               <label className="block text-gray-800 font-normal mb-1 text-sm">
-                Your Experience *
+                Your Experience <span className="text-red-800">*</span>
               </label>
               <textarea
                 className="w-full p-3 border rounded-lg h-32"
                 required
+                name="experience" value={formData.experience} onChange={handleChange}
               ></textarea>
             </div>
             <div className="flex justify-center gap-4">
@@ -75,8 +197,10 @@ export default function Submit() {
                 type="submit"
                 className="inline-flex items-center justify-center gap-2 text-sm border border-[#166E38] shadow bg-[#166E38] hover:bg-[#166E38] text-white font-medium rounded-full px-16 py-4 transition-all hover:scale-105"
               >
-                Submit
+                {loading ? "Submitting..." : "Submit"}
               </button>
+
+              {message && <p className="text-sm text-red-500">{message}</p>}
             </div>
           </form>
         </div>
