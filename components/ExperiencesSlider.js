@@ -6,7 +6,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 export default function ExperiencesSlider() {
   const sliderRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerView = 3;
+  const [itemsPerView, setItemsPerView] = useState(3);
 
   const experiences = [
     { text: "It was difficult getting my ID due to long queues.", county: "Nairobi", name: "John Doe" },
@@ -18,6 +18,20 @@ export default function ExperiencesSlider() {
   ];
 
   const totalItems = experiences.length;
+
+  const updateItemsPerView = () => {
+    if (window.innerWidth < 768) {
+      setItemsPerView(1);
+    } else {
+      setItemsPerView(3);
+    }
+  };
+
+  useEffect(() => {
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, []);
 
   const scrollToIndex = (index) => {
     if (sliderRef.current) {
@@ -44,18 +58,18 @@ export default function ExperiencesSlider() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, itemsPerView]);
 
   return (
     <section className="bg-gray-50 py-16">
-      <div className="max-w-[80%] mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
+      <div className="max-w-[90%] md:max-w-[80%] mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-6">
           Shared Experiences
         </h2>
         <div className="relative overflow-hidden">
           <button
             onClick={scrollLeft}
-            className="absolute left-0 z-10 bg-[#166E38] text-white p-3 rounded-full shadow-md top-1/2 transform -translate-y-1/2"
+            className="absolute left-2 md:left-0 z-10 bg-[#166E38] text-white p-3 rounded-full shadow-md top-1/2 transform -translate-y-1/2"
           >
             <FaArrowLeft />
           </button>
@@ -67,7 +81,7 @@ export default function ExperiencesSlider() {
               {experiences.map((exp, index) => (
                 <div
                   key={index}
-                  className="w-[30%] bg-white shadow-md rounded-md p-6 text-center mx-3 flex-shrink-0"
+                  className="w-[90%] md:w-[30%] bg-white shadow-md rounded-md p-6 text-center mx-3 flex-shrink-0"
                 >
                   <p className="text-gray-700">"{exp.text}"</p>
                   <p className="text-gray-600 mt-2">
@@ -79,7 +93,7 @@ export default function ExperiencesSlider() {
           </div>
           <button
             onClick={scrollRight}
-            className="absolute right-0 z-10 bg-[#166E38] text-white p-3 rounded-full shadow-md top-1/2 transform -translate-y-1/2"
+            className="absolute right-2 md:right-0 z-10 bg-[#166E38] text-white p-3 rounded-full shadow-md top-1/2 transform -translate-y-1/2"
           >
             <FaArrowRight />
           </button>

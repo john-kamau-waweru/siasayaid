@@ -36,17 +36,19 @@ export default function Experiences() {
   return (
     <div className={`bg-white text-[#3A3A3A] ${openSans.className}`}>
       {/* Header */}
-      <header className="flex justify-between items-center p-4 bg-white max-w-[80%] mx-auto">
-        <div className={`text-[#333333] text-xl ${poppins.className}`}>
+      <header className="flex justify-between items-center p-4 bg-white max-w-[90%] md:max-w-[80%] mx-auto">
+        <div className="w-full flex justify-center md:justify-start">
           <Link href={`/`}>
             <Image src="/logo.png" width={80} height={0} alt="logo" />
           </Link>
         </div>
+        
+        {/* Hide button on mobile */}
         <Link
-          className="inline-flex items-center justify-center gap-2 text-sm border border-[#ED1D24] shadow bg-[#ED1D24] hover:bg-[#ED1D24] text-white font-medium rounded-full px-6 py-4 transition-all hover:scale-105"
+          className="hidden md:inline-flex items-center justify-center gap-2 text-sm border border-[#ED1D24] shadow bg-[#ED1D24] hover:bg-[#ED1D24] text-white font-medium rounded-full px-6 py-4 transition-all hover:scale-105"
           href="/submit"
         >
-          Share Your Experience
+          What has been your experience?
         </Link>
       </header>
 
