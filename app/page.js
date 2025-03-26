@@ -32,8 +32,8 @@ export default function Home() {
 
         
         <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left">
-          <h1 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-3">
-            Your ID, Your Power!
+          <h1 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
+            #SiasaYaID by Siasa Place
           </h1>
           <p className="text-gray-700 max-w-2xl mx-auto md:mx-0">
             An ID isn’t just an official document—it’s your key to security,
