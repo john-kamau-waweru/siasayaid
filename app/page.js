@@ -1,102 +1,118 @@
 import Image from "next/image";
+import { Poppins, Open_Sans } from "next/font/google";
+import Link from "next/link";
+
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
+const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className={`bg-white text-[#3A3A3A] ${openSans.className}`}>
+      {/* Header */}
+      <header className="flex justify-between items-center p-4 bg-white max-w-[80%] mx-auto">
+        <div className={`text-[#333333] text-xl ${poppins.className}`}>
+          <Image src="/logo.png" width={80} height={0} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          class="inline-flex items-center justify-center gap-2 text-sm border border-[#ED1D24] shadow h-9 bg-[#ED1D24] hover:bg-[#ED1D24] text-white font-medium rounded-full px-6 py-3 transition-all hover:scale-105"
+          href="/submit"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          What has been your experience?
+        </Link>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative flex items-center justify-between px-8 py-16 bg-white bg-cover max-w-[80%] mx-auto md:min-h-[500px]">
+        {/* Floating Balls */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 left-10 w-4 h-4 bg-[#ED1D24] rounded-full" />
+          <div className="absolute top-20 left-[40%] w-4 h-4 bg-[#166E38] rounded-full delay-1000" />
+          <div className="absolute bottom-10 left-1/2 w-4 h-4 bg-black rounded-full delay-2000" />
+          <div className="absolute bottom-20 right-10 w-4 h-4 bg-[#ED1D24] rounded-full delay-1500" />
+          <div className="absolute top-5 right-5 w-4 h-4 bg-[#166E38] rounded-full delay-500" />
+        </div>
+        <div>
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
+            #SiasaYaID by Siasa Place
+          </h1>
+          <p class="text-lg md:text-xl text-gray-800 mb-10 max-w-2xl">
+            Access to IDs is a major barrier to young people's political
+            participation.
+          </p>
+          <div className="mt-6 flex gap-4">
+            <Link
+              className="inline-flex items-center justify-center gap-2 text-sm border border-[#ED1D24] shadow h-9 bg-[#ED1D24] hover:bg-white hover:text-[#ED1D24] text-white font-medium rounded-full px-6 py-3"
+              href="/submit"
+            >
+              What has been your experience?
+            </Link>
+            <Link
+              className="inline-flex items-center justify-center gap-2 text-sm border border-[#166E38] shadow h-9 bg-white hover:bg-[#166E38] hover:text-white text-[#166E38] font-medium rounded-full px-6 py-3"
+              href="/submit"
+            >
+              Other experiences
+            </Link>
+          </div>
+        </div>
+        <Image
+          src="/kenyan-id.jpeg"
+          width={400}
+          height={400}
+          alt="Hero"
+          className="rounded-full border border-white shadow-lg"
+        />
+      </section>
+
+      {/* CTA Section */}
+      <section className="p-8 text-center bg-gray-100 max-w-[80%] mx-auto">
+        <div className="bg-white shadow-md p-6 rounded-md">
+          Join us today and make identification easy!
+        </div>
+      </section>
+
+      {/* Three Cards Section */}
+      <section className="p-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[80%] mx-auto">
+        {["Security", "Verification", "Accessibility"].map((title) => (
+          <div key={title} className="p-6 bg-white shadow-md rounded-md">
+            <h3 className={`text-[#333333] text-xl ${poppins.className}`}>
+              {title}
+            </h3>
+            <p className="mt-2">
+              Identification cards ensure {title.toLowerCase()}.
+            </p>
+          </div>
+        ))}
+      </section>
+
+      {/* Image & Text Section */}
+      <section className="flex flex-col md:flex-row items-center p-8 gap-6 max-w-[80%] mx-auto">
+        <Image
+          src="/info-image.png"
+          width={300}
+          height={200}
+          alt="Information"
+        />
+        <div>
+          <h2 className={`text-[#333333] text-2xl ${poppins.className}`}>
+            Why Choose Us?
+          </h2>
+          <p className="mt-4">
+            We provide the best services for identification.
+          </p>
+          <div className="mt-6 flex gap-4">
+            <button className="bg-[#ED1D24] text-white px-4 py-2 rounded">
+              Sign Up
+            </button>
+            <button className="bg-[#166E38] text-white px-4 py-2 rounded">
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="p-4 text-center bg-gray-100 max-w-[80%] mx-auto">
+        &copy; 2025 Siasa Place
       </footer>
     </div>
   );
