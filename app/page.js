@@ -40,6 +40,13 @@ export default function Home() {
 
       {/* Image & Text Section */}
       <section className="relative flex flex-col md:flex-row items-center gap-6 max-w-[80%] mx-auto pb-0 pt-4">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 left-10 w-3 h-3 md:w-4 md:h-4 bg-[#ED1D24] rounded-full animate-glow" />
+          <div className="absolute top-20 left-[40%] w-3 h-3 md:w-4 md:h-4 bg-[#166E38] rounded-full animate-glow delay-1000" />
+          <div className="absolute bottom-10 left-1/2 w-3 h-3 md:w-4 md:h-4 bg-black rounded-full animate-glow delay-2000" />
+          <div className="absolute bottom-20 right-10 w-3 h-3 md:w-4 md:h-4 bg-[#ED1D24] rounded-full animate-glow delay-1500" />
+          <div className="absolute top-5 right-5 w-3 h-3 md:w-4 md:h-4 bg-[#166E38] rounded-full animate-glow delay-500" />
+        </div>
         <div className="w-full md:w-[60%] flex flex-col justify-center text-center md:text-left">
           {/* MODIFY BELOW TO MAKE IT HAVE A GRAFITTI FONT AND LIGHT GREY MAYBE GREY-600 */}
           <h2 className={`${graffitiFont.className} text-gray-600 text-md md:text-lg mb-1`}>
