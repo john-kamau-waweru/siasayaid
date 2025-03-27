@@ -83,6 +83,7 @@ export default function Submit() {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
+    time: "",
     email: "",
     county: "",
     experience: "",
@@ -101,9 +102,9 @@ export default function Submit() {
     setLoading(true);
     setMessage("");
 
-    const { name, age, email, county, experience } = formData;
+    const { name, age, time, email, county, experience } = formData;
 
-    if (!name || !county || !experience) {
+    if (!name || !age || !county || !experience) {
       setMessage("Please fill in all required fields.");
       setLoading(false);
       return;
@@ -115,7 +116,7 @@ export default function Submit() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, age, email, county, experience }),
+        body: JSON.stringify({ name, age, time, email, county, experience }),
       });
 
       const result = await response.json();
@@ -124,7 +125,7 @@ export default function Submit() {
         toast.success("Experience Submitted Successfully!", {
           icon: "✅",
         });
-        setFormData({ name: "", age: "", email: "", county: "", experience: "" });
+        setFormData({ name: "", age: "", time: "", email: "", county: "", experience: "" });
         setTimeout(() => {
           router.push("/experiences");
         }, 2000);
@@ -214,6 +215,16 @@ export default function Submit() {
                 Email
               </label>
               <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-3 border rounded-lg" />
+            </div>
+            <div className="mb-5">
+              <label className="block text-gray-800 font-normal mb-1 text-sm">
+                How long did it take you?
+              </label>
+              <textarea
+                className="w-full p-3 border rounded-lg h-10"
+                required
+                name="time" value={formData.time} onChange={handleChange}
+              ></textarea>
             </div>
             <div className="mb-5">
               <label className="block text-gray-800 font-normal mb-1 text-sm">

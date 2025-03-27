@@ -65,8 +65,9 @@ export default function Experiences() {
             {experiences.map((exp) => (
               <div key={exp._id} className="p-6 bg-white shadow-md rounded-md">
                 <h3 className="text-xl font-semibold text-gray-900">{exp.county}</h3>
+                {exp?.time && <p className="text-gray-700 mt-2">Time taken: {exp?.time}</p>}
                 <p className="text-gray-700 mt-2">{exp.experience}</p>
-                <p className="text-sm text-gray-500 mt-4">By {exp.name} - {exp?.age}</p>
+                <p className="text-sm text-gray-500 mt-4">By {exp.name} {exp?.age && - exp?.age}</p>
               </div>
             ))}
           </div>

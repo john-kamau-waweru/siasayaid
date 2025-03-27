@@ -6,6 +6,7 @@ const ExperienceSchema = new mongoose.Schema(
     age: {type: String, required: true},
     email: { type: String },
     county: { type: String, required: true },
+    time: {type: String},
     experience: { type: String, required: true },
   },
   { timestamps: true }
