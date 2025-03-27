@@ -189,7 +189,7 @@ export default function Submit() {
               <label className="block text-gray-800 font-normal mb-1 text-sm">
                 Age <span className="text-red-800">*</span>
               </label>
-              <select className="w-full p-3 border rounded-lg" name="age" value={formData.county} onChange={handleChange} required>
+              <select className="w-full p-3 border rounded-lg" name="age" value={formData.age} onChange={handleChange} required>
                 <option value="">Select Age Group</option>
                 {/* Add county options here */}
                 {ages.map((age) => (
