@@ -41,13 +41,14 @@ export default function Home() {
       {/* Image & Text Section */}
       <section className="relative flex flex-col md:flex-row items-center gap-6 max-w-[80%] mx-auto pb-0 pt-4">
         <div className="w-full md:w-[60%] flex flex-col justify-center text-center md:text-left">
+          {/* MODIFY BELOW TO MAKE IT HAVE A GRAFITTI FONT AND LIGHT GREY MAYBE GREY-600 */}
+          <h2 className={`${graffitiFont.className} text-gray-600 text-2xl md:text-3xl mb-1`}>
+            #SiasaYaID by Siasa Place
+          </h2>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
             Your ID Process Experience
           </h1>
-          {/* MODIFY BELOW TO MAKE IT HAVE A GRAFITTI FONT AND LIGHT GREY MAYBE GREY-600 */}
-          <h2 className={`${graffitiFont.className} text-gray-600 text-2xl md:text-3xl`}>
-            #SiasaYaID by Siasa Place
-          </h2>
+          
           <p className="text-gray-700 max-w-xl mx-auto md:mx-0">
             An ID isn’t just an official document—it’s your key to security,
             opportunities, and freedom. From accessing services to unlocking
