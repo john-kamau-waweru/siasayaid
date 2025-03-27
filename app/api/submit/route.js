@@ -6,10 +6,10 @@ import { connectToDatabase } from "../lib/mongodb";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { name, email, county, experience } = body;
+    const { name, age, email, county, experience } = body;
 
     // Validate inputs
-    if (!name || !county || !experience) {
+    if (!name || !age || !county || !experience) {
       return new Response(JSON.stringify({ message: "Missing required fields" }), { status: 400 });
     }
 
@@ -17,7 +17,7 @@ export async function POST(req) {
     await connectToDatabase();
 
     // Save to database
-    const newExperience = await Experience.create({ name, email, county, experience });
+    const newExperience = await Experience.create({ name, age, email, county, experience });
 
     return new Response(JSON.stringify({ message: "Experience submitted successfully", data: newExperience }), {
       status: 201,

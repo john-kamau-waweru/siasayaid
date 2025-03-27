@@ -60,9 +60,29 @@ const counties = [
   { name: "Nairobi", code: 47 },
 ];
 
+const ages = [
+  {
+    id: 1,
+    value: "18 - 24"
+  },
+  {
+    id: 2,
+    value: "25 - 30"
+  },
+  {
+    id: 3,
+    value: "31 - 35"
+  },
+  {
+    id: 4,
+    value: "Above 35"
+  }
+];
+
 export default function Submit() {
   const [formData, setFormData] = useState({
     name: "",
+    age: "",
     email: "",
     county: "",
     experience: "",
@@ -81,7 +101,7 @@ export default function Submit() {
     setLoading(true);
     setMessage("");
 
-    const { name, email, county, experience } = formData;
+    const { name, age, email, county, experience } = formData;
 
     if (!name || !county || !experience) {
       setMessage("Please fill in all required fields.");
@@ -95,7 +115,7 @@ export default function Submit() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, county, experience }),
+        body: JSON.stringify({ name, age, email, county, experience }),
       });
 
       const result = await response.json();
@@ -104,7 +124,7 @@ export default function Submit() {
         toast.success("Experience Submitted Successfully!", {
           icon: "✅",
         });
-        setFormData({ name: "", email: "", county: "", experience: "" });
+        setFormData({ name: "", age: "", email: "", county: "", experience: "" });
         setTimeout(() => {
           router.push("/experiences");
         }, 2000);
@@ -167,6 +187,19 @@ export default function Submit() {
             </div>
             <div className="mb-5">
               <label className="block text-gray-800 font-normal mb-1 text-sm">
+                Age <span className="text-red-800">*</span>
+              </label>
+              <select className="w-full p-3 border rounded-lg" name="age" value={formData.county} onChange={handleChange} required>
+                <option value="">Select Age Group</option>
+                <option key="" value={county.name}>{county.name}</option>
+                {/* Add county options here */}
+                {ages.map((age) => (
+                  <option key={age.id} value={age.value}>{age.value}</option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-5">
+              <label className="block text-gray-800 font-normal mb-1 text-sm">
                 County <span className="text-red-800">*</span>
               </label>
               <select className="w-full p-3 border rounded-lg" name="county" value={formData.county} onChange={handleChange} required>
@@ -179,9 +212,9 @@ export default function Submit() {
             </div>
             <div className="mb-5">
               <label className="block text-gray-800 font-normal mb-1 text-sm">
-                Email <span className="text-red-800">*</span>
+                Email
               </label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-3 border rounded-lg" required />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-3 border rounded-lg" />
             </div>
             <div className="mb-5">
               <label className="block text-gray-800 font-normal mb-1 text-sm">

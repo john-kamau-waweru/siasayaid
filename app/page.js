@@ -50,7 +50,7 @@ export default function Home() {
         <div className="w-full md:w-[60%] flex flex-col justify-center text-center md:text-left">
           {/* MODIFY BELOW TO MAKE IT HAVE A GRAFITTI FONT AND LIGHT GREY MAYBE GREY-600 */}
           <h2 className={`${graffitiFont.className} text-gray-600 text-md md:text-lg mb-1`}>
-            #SiasaYaID by Siasa Place
+            #SiasaYaID
           </h2>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
             Your ID Process Experience

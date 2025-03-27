@@ -66,7 +66,7 @@ export default function Experiences() {
               <div key={exp._id} className="p-6 bg-white shadow-md rounded-md">
                 <h3 className="text-xl font-semibold text-gray-900">{exp.county}</h3>
                 <p className="text-gray-700 mt-2">{exp.experience}</p>
-                <p className="text-sm text-gray-500 mt-4">By {exp.name}</p>
+                <p className="text-sm text-gray-500 mt-4">By {exp.name} - {exp?.age}</p>
               </div>
             ))}
           </div>
