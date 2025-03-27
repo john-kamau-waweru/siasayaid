@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Poppins, Open_Sans } from "next/font/google";
+import { Poppins, Open_Sans, Permanent_Marker } from "next/font/google";
 import Link from "next/link";
 import {
   FaShieldAlt,
@@ -16,6 +16,7 @@ import ExperiencesSlider from "@/components/ExperiencesSlider";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400"] });
+const graffitiFont = Permanent_Marker({ subsets: ["latin"], weight: ["400"] });
 
 export default function Home() {
   return (
@@ -43,6 +44,10 @@ export default function Home() {
           <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
             Your ID Process Experience
           </h1>
+          {/* MODIFY BELOW TO MAKE IT HAVE A GRAFITTI FONT AND LIGHT GREY MAYBE GREY-600 */}
+          <h2 className={`${graffitiFont.className} text-gray-600 text-2xl md:text-3xl`}>
+            #SiasaYaID by Siasa Place
+          </h2>
           <p className="text-gray-700 max-w-xl mx-auto md:mx-0">
             An ID isn’t just an official document—it’s your key to security,
             opportunities, and freedom. From accessing services to unlocking
